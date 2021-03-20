@@ -6,8 +6,12 @@ This file creates your application.
 """
 
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash, session, abort
+from werkzeug.utils import secure_filename
 
+import os
+from .forms import UploadForm
+from flask import send_from_directory
 
 ###
 # Routing for your application.
@@ -22,7 +26,52 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Mike Gold")
+
+
+@app.route('/property', methods=['POST', 'GET'])
+def property():
+    """ For displaying the form to add a new property"""
+    myform = UploadForm()
+    # Validate file upload on submit
+    print(request)
+    if request.method == 'POST' and myform.validate_on_submit():
+        # Get file data and save to your uploads folder
+        photo = myform.upload.data
+        filefolder = app.config['UPLOAD_FOLDER']
+        filename = secure_filename(photo.filename)
+        photo.save(os.path.join(filefolder,filename))
+        flash('File Saved', 'success')
+        return redirect(url_for('home'))
+    return render_template('upload.html', form = myform)
+
+
+@app.route('/properties')
+def properties():
+    """For displaying a list of all properties in the database."""
+    files = get_uploaded_images()
+    return render_template('files.html', files = files)
+
+
+@app.route('/property/<propertyid>')
+def get_image(propertyid):
+    """For viewing an individual property by the specific property id."""
+    rootdir = os.getcwd()
+    filename = propertyid
+    return send_from_directory(os.path.join(rootdir, app.config['UPLOAD_FOLDER']), filename)
+
+
+def get_uploaded_images():
+    rootdir = app.config['UPLOAD_FOLDER']
+    print (rootdir)
+    lst = []
+    for _, _, files in os.walk(rootdir):
+        for f in files:
+            if len(f) > 3:
+                if f[-3:] in ['jpg', 'png']:
+                    lst.append(f)
+    print(lst)
+    return lst
 
 
 ###
