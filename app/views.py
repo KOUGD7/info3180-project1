@@ -36,7 +36,7 @@ def property():
     """ For displaying the form to add a new property"""
     myform = UploadForm()
     # Validate file upload on submit
-    print(request)
+    #print(request)
     if request.method == 'POST' and myform.validate_on_submit():
         # Get file data and save to your uploads folder
         photo = myform.upload.data
@@ -54,7 +54,7 @@ def property():
         des = myform.description.data
         
         prop = Property (title, bed, bath, loc, price, types, des, filename)
-        print(prop)
+        #print(prop)
         db.session.add(prop)
         db.session.commit()
         flash('New user was successfully added')
@@ -67,8 +67,9 @@ def property():
 def properties():
     """For displaying a list of all properties in the database."""
     files = get_uploaded_images()
-    print(files)
-    return render_template('files.html', files = files)
+    properties = db.session.query(Property).all()
+    print(properties)
+    return render_template('properties.html', files = files, properties = properties)
 
 
 @app.route('/property/<propertyid>')
@@ -81,14 +82,14 @@ def get_image(propertyid):
 
 def get_uploaded_images():
     rootdir = app.config['UPLOAD_FOLDER']
-    print (rootdir)
+    #print (rootdir)
     lst = []
     for _, _, files in os.walk(rootdir):
         for f in files:
             if len(f) > 3:
                 if f[-3:] in ['jpg', 'png']:
                     lst.append(f)
-    print(lst)
+    #print(lst)
     return lst
 
 
