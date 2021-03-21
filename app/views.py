@@ -12,6 +12,8 @@ from werkzeug.utils import secure_filename
 import os
 from .forms import UploadForm
 from flask import send_from_directory
+from app import app, db
+from app.models import Property
 
 ###
 # Routing for your application.
@@ -42,6 +44,21 @@ def property():
         filename = secure_filename(photo.filename)
         photo.save(os.path.join(filefolder,filename))
         flash('File Saved', 'success')
+
+        title = myform.title.data
+        bed = myform.bedroom.data
+        bath = myform.bathroom.data
+        loc = myform.location.data
+        price = myform.price.data
+        types = myform.types.data
+        des = myform.description.data
+        
+        prop = Property (title, bed, bath, loc, price, types, des, filename)
+        print(prop)
+        db.session.add(prop)
+        db.session.commit()
+        flash('New user was successfully added')
+
         return redirect(url_for('home'))
     return render_template('upload.html', form = myform)
 

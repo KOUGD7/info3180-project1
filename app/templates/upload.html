@@ -9,6 +9,27 @@
 <form action="{{ url_for('property') }}" method="post" enctype="multipart/form-data">
   {{ form.csrf_token }}
 
+  {{ form.title.label }} 
+  {{ form.title(class="form-control") }}
+
+  {{ form.bedroom.label }} 
+  {{ form.bedroom(class="form-control") }}
+
+  {{ form.bathroom.label }} 
+  {{ form.bathroom(class="form-control") }}
+
+  {{ form.location.label }} 
+  {{ form.location(class="form-control") }}
+
+  {{ form.price.label }} 
+  {{ form.price(class="form-control") }}
+
+  {{ form.types.label }} 
+  {{ form.types(class="form-control") }}
+
+  {{ form.description.label }} 
+  {{ form.description(class="form-control") }}
+
   {# Add the file upload field as you learnt for Flask-WTF #}
   {{ form.upload.label }} 
   {{ form.upload(class="form-control") }}
