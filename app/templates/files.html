@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1 class="page-header">Files</h1>
+<h1 class="page-header">Properties</h1>
 
 {% include 'flash_messages.html' %}
 
 <ul id = 'images'>
     {% for file in files %}
-    <img src="{{url_for('get_image', filename="" + file) }}"/>
+    <img src="{{url_for('get_image', propertyid="" + file) }}"/>
     {% endfor %}
 </ul> 
    

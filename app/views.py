@@ -59,7 +59,7 @@ def property():
         db.session.commit()
         flash('New user was successfully added')
 
-        return redirect(url_for('home'))
+        return redirect(url_for('properties'))
     return render_template('upload.html', form = myform)
 
 
@@ -67,6 +67,7 @@ def property():
 def properties():
     """For displaying a list of all properties in the database."""
     files = get_uploaded_images()
+    print(files)
     return render_template('files.html', files = files)
 
 
