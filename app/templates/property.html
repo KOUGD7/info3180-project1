@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+{% include 'flash_messages.html' %}
+
+<ul class="d-flex flex-row" style="margin: 50px;">
+    {% for p in properties %}
+    <div id = "pcard" class = "card" style="height: 25rem; margin: 10px;">
+        <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img-left" alt="property image"/>
+        <div class="card-body">
+            <h5 class="card-title"> {{p.title}} </h5>
+            <p>  {{p.price}} </p> 
+            <p>  {{p.type}} </p>
+            <p>  {{p.description}} </p>
+            <p>  {{p.bedroom}} Bedroom </p>
+            <p>  {{p.bathroom}} Bathroom </p>
+            <p  class="card-text">  {{p.location}} </p>
+            <a href="#" class="btn btn-primary active">Email Realtor</a>
+        </div>
+    </div>
+    {% endfor %}
+</ul> 
+   
+{% endblock %}

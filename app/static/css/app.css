@@ -1,3 +1,7 @@
 body {
     padding-top: 50px;
 }
+
+#pcard {
+    flex-direction: row;
+  }

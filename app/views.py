@@ -73,12 +73,16 @@ def properties():
 
 
 @app.route('/property/<propertyid>')
-def get_image(propertyid):
+def get_property(propertyid):
     """For viewing an individual property by the specific property id."""
-    rootdir = os.getcwd()
-    filename = propertyid
-    return send_from_directory(os.path.join(rootdir, app.config['UPLOAD_FOLDER']), filename)
+    #properties = db.session.query(Property).all()
+    properties = Property.query.filter_by(id= propertyid)
+    return render_template('property.html', properties = properties)
 
+@app.route('/image/<filename>')
+def get_image(filename):
+    rootdir = os.getcwd()
+    return send_from_directory(os.path.join(rootdir, app.config['UPLOAD_FOLDER']), filename)
 
 def get_uploaded_images():
     rootdir = app.config['UPLOAD_FOLDER']
