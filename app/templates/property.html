@@ -4,19 +4,28 @@
 
 {% include 'flash_messages.html' %}
 
-<ul class="d-flex flex-row" style="margin: 50px;">
+<ul class="d-flex flex-row " style="margin: 50px;">
     {% for p in properties %}
-    <div id = "pcard" class = "card" style="height: 25rem; margin: 10px;">
-        <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img-left" alt="property image"/>
+    <div id = "pcard" class = "card" style="margin: 10px;">
+        <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img" alt="property image"/>
         <div class="card-body">
             <h5 class="card-title"> {{p.title}} </h5>
-            <p>  {{p.price}} </p> 
-            <p>  {{p.type}} </p>
-            <p>  {{p.description}} </p>
-            <p>  {{p.bedroom}} Bedroom </p>
-            <p>  {{p.bathroom}} Bathroom </p>
+            <div class="d-flex flex-row">
+                <div class="ptags mr-2 text-white"> ${{p.price}}</div> 
+                <div class="ttags text-dark">  {{p.types}} </div>
+            </div>
+
+            <div class= "mt-3">
+                <p> {{p.description}} </p>
+            </div>
+
+            <div class="m-0 d-flex flex-row">
+                <p class="mr-2">  {{p.bedroom}} Bedroom </p>
+                <p>  {{p.bathroom}} Bathroom </p>
+            </div>
+    
             <p  class="card-text">  {{p.location}} </p>
-            <a href="#" class="btn btn-primary active">Email Realtor</a>
+            <a href="#" class="btn btn-info active">Email Realtor</a>
         </div>
     </div>
     {% endfor %}

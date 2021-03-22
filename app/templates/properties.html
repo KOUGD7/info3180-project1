@@ -7,15 +7,15 @@
 
 <ul class="d-flex flex-row">
     {% for p in properties %}
-    <div class = "card" style="width: 18rem; margin: 10px;">
+    <div class = "card" style="width: 20rem; margin: 5px;">
         <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img-top" alt="property image"/>
         <div class="card-body">
-            <h5 class="card-title"> {{p.title}} </h5>
-            <p  class="card-text">  {{p.location}} </p>
-            <p>  {{p.price}} </p>
-            <div class = "card-footer text-center">
-                <a href="{{url_for('get_property', propertyid="" + p.id | string) }}" class="card-link">View Property</a>
-            </div>
+            <h5 class="mb-0 pb-0 card-title"> {{p.title}} </h5>
+            <p class="mt-0 pt-0 card-text">  {{p.location}} </p>
+            <span class ="ptags text-white"> ${{p.price}} </span>
+        </div>
+        <div class = "btn bg-info card-footer text-center">
+            <a href="{{url_for('get_property', propertyid="" + p.id | string) }}" class="card-link text-white">View Property</a>
         </div>
     </div>
     {% endfor %}

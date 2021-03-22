@@ -14,8 +14,8 @@ class UploadForm (FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     price = StringField('Price', validators=[DataRequired()])
 
-    my_choices = [('1', 'House'), ('2', 'Apartment')]
-    types = SelectField(choices = my_choices, default = ['1'])
+    my_choices = [('House', 'House'), ('Apartment', 'Apartment')]
+    types = SelectField(choices = my_choices, default = ['House'])
 
     description = StringField('Description', widget=TextArea())
 

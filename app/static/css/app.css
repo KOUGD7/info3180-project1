@@ -5,3 +5,18 @@ body {
 #pcard {
     flex-direction: row;
   }
+
+.ptags, .ttags{
+    border-radius: 20px;
+    font-size: small;
+    padding: 5px;
+}
+
+.ptags{
+    background-color: #5093eb;
+    border: #5093eb;
+}
+.ttags{
+    background-color: #dbc12a;
+    border: #dbc12a;
+}
