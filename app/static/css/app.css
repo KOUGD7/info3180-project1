@@ -2,6 +2,11 @@ body {
     padding-top: 50px;
 }
 
+.card img{
+    max-width: 400px;
+    height: auto;
+}
+
 #pcard {
     flex-direction: row;
   }
