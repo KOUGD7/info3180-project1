@@ -20,11 +20,15 @@
             </div>
 
             <div class="m-0 d-flex flex-row">
-                <p class="mr-2">  {{p.bedroom}} Bedroom </p>
-                <p>  {{p.bathroom}} Bathroom </p>
+                <i class="material-icons">bed</i>
+                <p class="ml-2 mr-3">  {{p.bedroom}} Bedroom </p>
+                <i class="material-icons">bathroom</i>
+                <p class="ml-2">  {{p.bathroom}} Bathroom </p>
             </div>
-    
-            <p  class="card-text">  {{p.location}} </p>
+            <div class="mb-3 d-flex flex-row">
+                <i class="material-icons">location_on</i>
+                <p class="card-text ml-2">  {{p.location}} </p>
+            </div>
             <a href="#" class="btn btn-info active">Email Realtor</a>
         </div>
     </div>

@@ -8,7 +8,7 @@ from wtforms.widgets import TextArea
 
 class UploadForm (FlaskForm):
 
-    title = StringField('Title', validators=[DataRequired()])
+    title = StringField('Property Title', validators=[DataRequired()])
     bedroom = StringField('No. Of Bedrooms', validators=[DataRequired()])
     bathroom = StringField('No. Of Bathrooms', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])

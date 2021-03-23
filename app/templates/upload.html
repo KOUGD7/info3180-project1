@@ -1,39 +1,54 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1 class="page-header">File Upload</h1>
+<div class="m-5 w-75" style="margin: 0 auto;">
+<h1 class="page-header">Add New Property</h1>
 
 {% include 'flash_messages.html' %}
 
 {# Add the appropriate method and enctype attributes to the form tag to allow for file uploads #}
-<form action="{{ url_for('property') }}" method="post" enctype="multipart/form-data">
+<form class = "p-4 bg-white" action="{{ url_for('property') }}" method="post" enctype="multipart/form-data">
   {{ form.csrf_token }}
-
+  
   {{ form.title.label }} 
   {{ form.title(class="form-control") }}
-
-  {{ form.bedroom.label }} 
-  {{ form.bedroom(class="form-control") }}
-
-  {{ form.bathroom.label }} 
-  {{ form.bathroom(class="form-control") }}
-
-  {{ form.location.label }} 
-  {{ form.location(class="form-control") }}
-
-  {{ form.price.label }} 
-  {{ form.price(class="form-control") }}
-
-  {{ form.types.label }} 
-  {{ form.types(class="form-control") }}
 
   {{ form.description.label }} 
   {{ form.description(class="form-control") }}
 
-  {# Add the file upload field as you learnt for Flask-WTF #}
-  {{ form.upload.label }} 
-  {{ form.upload(class="form-control") }}
+  <div class="row">
+    <div class="col-sm-6">
+    {{ form.bedroom.label }} 
+    {{ form.bedroom(class="form-control") }}
+    </div>
+    <div class="col-sm-6">
+    {{ form.bathroom.label }} 
+    {{ form.bathroom(class="form-control") }}
+    </div>
+  </div>
 
-  <button type="submit" name="submit" class="btn btn-primary">Upload file</button>
+  <div class="row">
+    <div class="col-sm-6">
+  {{ form.price.label }} 
+  {{ form.price(class="form-control") }}
+  </div>
+  <div class="col-sm-6">
+  {{ form.types.label }} 
+  {{ form.types(class="form-control") }}
+  </div>
+  </div>
+
+  <div class="ml-0 pl-0 col-sm-6">
+  {{ form.location.label }} 
+  {{ form.location(class="form-control") }}
+  </div>
+
+  <div class="ml-0 pl-0 col-sm-6">
+  {{ form.upload.label }} 
+  {{ form.upload(class="custom-file") }}
+  </div>
+
+  <button type="submit" name="submit" class="btn btn-primary mt-3">Add Property</button>
 </form>
+</div>
 {% endblock %}

@@ -10,8 +10,13 @@
     <div class = "card" style="width: 20rem; margin: 5px;">
         <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img-top" alt="property image"/>
         <div class="card-body">
-            <h5 class="mb-0 pb-0 card-title"> {{p.title}} </h5>
-            <p class="mt-0 pt-0 card-text">  {{p.location}} </p>
+            <h5 class="ml-2 mb-0 pb-0 card-title"> {{p.title}} </h5>
+
+            <div class="mb-3 mt-1 d-flex flex-row">
+                <i class="material-icons">location_on</i>
+                <p class="card-text">  {{p.location}} </p>
+            </div>
+
             <span class ="ptags text-white"> ${{p.price}} </span>
         </div>
         <div class = "btn bg-info card-footer text-center">
