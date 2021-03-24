@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import StringField, SelectField, IntegerField, DecimalField,fields
+from wtforms import StringField, SelectField, IntegerField, DecimalField, fields
 from wtforms.validators import DataRequired, Email, Length, NumberRange
 from wtforms.widgets import TextArea
 
