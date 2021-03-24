@@ -6,6 +6,12 @@
 
 {% include 'flash_messages.html' %}
 
+{% for field, errors in form.errors.items() %}
+<div class="m-0 p-0 alert alert-warning">
+    {{ form[field].label }}: {{ ', '.join(errors) }}
+</div>
+
+{% endfor %}
 {# Add the appropriate method and enctype attributes to the form tag to allow for file uploads #}
 <form class = "p-4 bg-white" action="{{ url_for('property') }}" method="post" enctype="multipart/form-data">
   {{ form.csrf_token }}
