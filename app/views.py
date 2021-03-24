@@ -52,6 +52,8 @@ def property():
         price = myform.price.data
         types = myform.types.data
         des = myform.description.data
+
+        price = format (price, ',f')
         
         prop = Property (title, bed, bath, loc, price, types, des, filename)
         #print(prop)

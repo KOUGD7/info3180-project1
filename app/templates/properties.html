@@ -7,7 +7,7 @@
 
 <ul class="d-flex flex-row flex-wrap">
     {% for p in properties %}
-    <div class = "card" style="max-width: fit-content; margin: 5px;">
+    <div class = "card" style="width: 17rem; margin: 5px;">
         <img src="{{url_for('get_image', filename="" + p.photo) }}" class="card-img-top" alt="property image"/>
         <div class="card-body">
             <h5 class="ml-2 mb-0 pb-0 card-title"> {{p.title}} </h5>
